@@ -7,8 +7,6 @@ const Loader = () => <div id="loader">Loading...</div>;
 const App = () => {
   // function for url link
   function makeURL(type) {
-    console.log(type);
-
     return `https://www.boredapi.com/api/activity?type=${type}`;
   }
   // We can use two types
@@ -20,7 +18,6 @@ const App = () => {
     setActivity(null);
 
     let a = makeURL(z ? z : "education");
-    console.log(a);
 
     const response = await fetch(a);
     let data = await response.json();
