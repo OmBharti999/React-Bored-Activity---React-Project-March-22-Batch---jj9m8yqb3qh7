@@ -3,20 +3,25 @@ import "../styles/App.css";
 
 const Loader = () => <div id="loader">Loading...</div>;
 
+// z ? (z = "") : (z = "education");
 const App = () => {
   // function for url link
   function makeURL(type) {
+    console.log(type);
+
     return `https://www.boredapi.com/api/activity?type=${type}`;
   }
   // We can use two types
   // recreational or education.
   //
-  const [activity, setActivity] = useState("");
+  const [activity, setActivity] = useState(null);
 
   async function getResponse(z) {
-    setActivity("");
-    z ? (z = "") : (z = "education");
-    let a = makeURL(z);
+    setActivity(null);
+
+    let a = makeURL(z ? z : "education");
+    console.log(a);
+
     const response = await fetch(a);
     let data = await response.json();
     setActivity(data.activity);
@@ -26,7 +31,7 @@ const App = () => {
 
   return (
     <div id="main">
-      {activity ? <div id="activity">{activity}</div> : <Loader />}
+      {activity ? <div id="activity"> {activity}</div> : <Loader />}
       <button id="btn-recreation" onClick={() => getResponse("recreational")}>
         Recreational
       </button>
