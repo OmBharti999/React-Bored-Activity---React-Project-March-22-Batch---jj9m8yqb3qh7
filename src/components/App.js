@@ -7,6 +7,7 @@ const Loader = () => <div id="loader">Loading...</div>;
 const App = () => {
   // function for url link
   function makeURL(type) {
+    console.log(type);
     return `https://www.boredapi.com/api/activity?type=${type}`;
   }
   // We can use two types
@@ -24,7 +25,7 @@ const App = () => {
     setActivity(data.activity);
   }
 
-  useEffect(() => getResponse, []);
+  useEffect(() => getResponse("education"), []);
 
   return (
     <div id="main">
