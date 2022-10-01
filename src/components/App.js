@@ -3,7 +3,6 @@ import "../styles/App.css";
 
 const Loader = () => <div id="loader">Loading...</div>;
 
-// z ? (z = "") : (z = "education");
 const App = () => {
   // function for url link
   function makeURL(type) {
@@ -18,7 +17,7 @@ const App = () => {
   async function getResponse(z) {
     setActivity(null);
 
-    let a = makeURL(z ? z : "education");
+    let a = makeURL(z);
 
     const response = await fetch(a);
     let data = await response.json();
